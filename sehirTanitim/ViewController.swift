@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var sehirDizisi = [ Sehir ]()
+    var secilmisSehir : Sehir?
     @IBOutlet weak var tablo: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,21 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         let cell = UITableViewCell()
         cell.textLabel?.text = sehirDizisi[ indexPath.row].isim
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { //segue ile diğer ekrana geçmek için
+
+        secilmisSehir = sehirDizisi[indexPath.row]
+        performSegue(withIdentifier: "todetails", sender: nil)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "todetails"{
+            let destinationvc = segue.destination as! detailsViewController
+            destinationvc.secilenSehir = secilmisSehir
+            
+            
+        }
     }
 
 
