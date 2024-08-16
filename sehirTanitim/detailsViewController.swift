@@ -8,22 +8,21 @@
 import UIKit
 
 class detailsViewController: UIViewController {
-
+    
+    @IBOutlet weak var labelbolge: UILabel!
+    @IBOutlet weak var labelsehir: UILabel!
+    @IBOutlet weak var resim: UIImageView!
+    
+    var secilenSehir : Sehir? // optional geledebilir gelmeyedebilir. initializ etmeye gerek olmaz böylece
     override func viewDidLoad() {
         super.viewDidLoad()
+        labelsehir.text=secilenSehir?.isim
+        labelbolge.text=secilenSehir?.bolge
+        resim.image=secilenSehir?.gorsel
 
-        // Do any additional setup after loading the view.
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }
